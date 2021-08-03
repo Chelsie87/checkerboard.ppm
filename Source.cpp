@@ -41,7 +41,7 @@ int main() {
     int** in_matrix_ch3 = new int* [height];
     for (int i = 0; i < height; ++i)
         in_matrix_ch3[i] = new int[width];
-    
+
     //write to file 
     //R G B
     //black 0 0 0
@@ -94,7 +94,7 @@ int main() {
     //first checkerboard square 96x96
     for (int i_h = 16; i_h < 112; i_h++) {
         for (int i_w = 16; i_w <  112; i_w++) {
-            
+
             in_matrix_ch1[i_h][i_w] = 255;
             in_matrix_ch2[i_h][i_w] = 0;
             in_matrix_ch3[i_h][i_w] = 0;
@@ -123,28 +123,28 @@ int main() {
 
                 //If still in 1st square, make Red
                 if (change_color < 96) {
-                    in_matrix_ch1[i_h][i_w] = 255;
+                    in_matrix_ch1[i_h][i_w] = 0;
                     in_matrix_ch2[i_h][i_w] = 0;
                     in_matrix_ch3[i_h][i_w] = 0;
 
-                    
+
                 }
                 //If changed to next square (96px...) but not 2 squares past, make Yellow
                 else if (change_color >= 96 && change_color < 192) {
                     in_matrix_ch1[i_h][i_w] = 255;
                     in_matrix_ch2[i_h][i_w] = 255;
-                    in_matrix_ch3[i_h][i_w] = 0;
+                    in_matrix_ch3[i_h][i_w] = 255;
 
                 }
                 //If end of current square, make Red
                 else if (change_color == 192) {
-                    in_matrix_ch1[i_h][i_w] = 255;
+                    in_matrix_ch1[i_h][i_w] = 0;
                     in_matrix_ch2[i_h][i_w] = 0;
                     in_matrix_ch3[i_h][i_w] = 0;
 
                     //reset square color counter
                     change_color = 0;
-                    
+
                     //increment because it has moved 2 squares
                     square_count += 2;
                 }
@@ -160,10 +160,10 @@ int main() {
                 if (change_color < 96) {
                     in_matrix_ch1[i_h][i_w] = 255;
                     in_matrix_ch2[i_h][i_w] = 255;
-                    in_matrix_ch3[i_h][i_w] = 0;
+                    in_matrix_ch3[i_h][i_w] = 255;
                 }
                 else if (change_color >= 96 && change_color < 192) {
-                    in_matrix_ch1[i_h][i_w] = 255;
+                    in_matrix_ch1[i_h][i_w] = 0;
                     in_matrix_ch2[i_h][i_w] = 0;
                     in_matrix_ch3[i_h][i_w] = 0;
 
@@ -171,7 +171,7 @@ int main() {
                 else if (change_color == 192) {
                     in_matrix_ch1[i_h][i_w] = 255;
                     in_matrix_ch2[i_h][i_w] = 255;
-                    in_matrix_ch3[i_h][i_w] = 0;
+                    in_matrix_ch3[i_h][i_w] = 255;
 
                     change_color = 0;
                     square_count += 2;
@@ -180,7 +180,7 @@ int main() {
                 change_color++;
             }
         }
-        
+
         //when you reach 8, you complete 1 whole row. 
         //this signals to not print the next row because it is pattern 2
         //this continues for the whole board
